@@ -2,10 +2,12 @@ import React from 'react';
 
 import * as S from './styles';
 
-const Button = () => {
+const Button = ({...props}) => {
+  const {text, onPress} = props;
+
   return (
-    <S.Button>
-      <S.TextButton>Texto</S.TextButton>
+    <S.Button onPress={onPress}>
+      <S.TextButton>{text}</S.TextButton>
     </S.Button>
   );
 };
