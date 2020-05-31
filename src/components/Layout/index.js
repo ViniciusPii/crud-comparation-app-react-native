@@ -1,4 +1,5 @@
 import React from 'react';
+import {Platform} from 'react-native';
 
 import * as S from './styles';
 
@@ -10,13 +11,15 @@ const Layout = ({...props}) => {
   return (
     <S.Background bgColor={bgColor}>
       <S.Status bgColor={bgColor} />
-      <S.Container>{children}</S.Container>
+      <S.Container enable behavior={Platform.OS === 'ios' ? 'padding' : ''}>
+        {children}
+      </S.Container>
     </S.Background>
   );
 };
 
 Layout.defaultProps = {
-  bgColor: 'red',
+  bgColor: 'white',
 };
 
 Layout.propType = {
