@@ -1,11 +1,15 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+
+import colors from './themes/colors';
+import {ThemeProvider} from 'styled-components';
+
+import Login from './views/Login';
 
 const App = () => {
   return (
-    <View>
-      <Text>App</Text>
-    </View>
+    <ThemeProvider theme={colors}>
+      <Login />
+    </ThemeProvider>
   );
 };
 
