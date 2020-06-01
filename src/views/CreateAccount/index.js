@@ -11,7 +11,7 @@ const CreateAccount = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = () => {
+  const handleCreateAccount = () => {
     setLoading(true);
     firebase
       .auth()
@@ -29,6 +29,9 @@ const CreateAccount = () => {
             name,
             email,
           });
+
+        alert('Cadastrado com sucesso!');
+        setLoading(false);
       })
       .catch(erro => {
         if (name === '' || email === '' || password === '') {
@@ -41,15 +44,12 @@ const CreateAccount = () => {
           case 'Password should be at least 6 characters':
             alert('Sua senha deve ter no minimo 6 caracteres!');
             break;
-
           case 'The email address is already in use by another account.':
             alert('Esse email já está sendo utilizado por outro usuário!');
             break;
-
           case 'The email address is badly formatted.':
             alert('O formato do email não é válido!');
             break;
-
           default:
             alert('Não foi possível cadastrar o Usuário');
             break;
@@ -79,7 +79,11 @@ const CreateAccount = () => {
           value={password}
           onChangeText={t => setPassword(t)}
         />
-        <Button text="Cadastrar" onPress={handleLogin} loading={loading} />
+        <Button
+          text="Cadastrar"
+          onPress={handleCreateAccount}
+          loading={loading}
+        />
       </Container>
     </Layout>
   );
