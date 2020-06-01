@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 import {
   Layout,
@@ -10,6 +11,8 @@ import {
 } from '../../components';
 
 const Login = () => {
+  const navigation = useNavigation();
+
   return (
     <Layout bgColor="purple600">
       <Container>
@@ -18,7 +21,7 @@ const Login = () => {
         <Input placeholder="Senha" />
         <Button text="Login" onPress={() => {}} />
       </Container>
-      <CreateLink />
+      <CreateLink onPress={() => navigation.navigate('CreateAccount')} />
     </Layout>
   );
 };

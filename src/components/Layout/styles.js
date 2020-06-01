@@ -9,7 +9,7 @@ export const Background = styled.SafeAreaView`
 
 export const Status = styled(StatusBar).attrs(({theme, bgColor}) => ({
   barStyle: 'light-content',
-  backgroundColor: theme[bgColor],
+  backgroundColor: theme.purple600,
 }))``;
 
 export const Container = styled.KeyboardAvoidingView`
