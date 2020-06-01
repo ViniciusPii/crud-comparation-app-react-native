@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 
-export const CreateLink = styled.View`
+export const Container = styled.View`
   width: 115%;
-  height: 70px;
+  height: 60px;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -10,7 +10,12 @@ export const CreateLink = styled.View`
   background-color: ${({theme}) => theme.purple800};
 `;
 
-export const Link = styled.Text`
+export const ButtonLink = styled.TouchableOpacity`
+  align-items: center;
+  flex-direction: row;
+`;
+
+export const TextButton = styled.Text`
   font-size: 18px;
   color: ${({theme}) => theme.yellow};
 `;
