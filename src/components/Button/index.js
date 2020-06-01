@@ -3,11 +3,11 @@ import React from 'react';
 import * as S from './styles';
 
 const Button = ({...props}) => {
-  const {text} = props;
+  const {text, loading} = props;
 
   return (
     <S.Button {...props}>
-      <S.TextButton>{text}</S.TextButton>
+      {loading ? <S.LoadingButton /> : <S.TextButton>{text}</S.TextButton>}
     </S.Button>
   );
 };

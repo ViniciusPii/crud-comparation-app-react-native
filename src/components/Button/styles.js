@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import {ActivityIndicator} from 'react-native';
 
 export const Button = styled.TouchableOpacity`
   width: 100%;
@@ -12,6 +13,11 @@ export const Button = styled.TouchableOpacity`
   border-radius: 8px;
   background-color: ${({theme}) => theme.yellow};
 `;
+
+export const LoadingButton = styled(ActivityIndicator).attrs(({theme}) => ({
+  color: theme.purple600,
+  size: 'large',
+}))``;
 
 export const TextButton = styled.Text`
   font-size: 18px;
