@@ -11,9 +11,7 @@ const Layout = ({...props}) => {
   return (
     <S.Background bgColor={bgColor}>
       <S.Status bgColor={bgColor} />
-      <S.Container enable behavior={Platform.OS === 'ios' ? 'padding' : ''}>
-        {children}
-      </S.Container>
+      {children}
     </S.Background>
   );
 };

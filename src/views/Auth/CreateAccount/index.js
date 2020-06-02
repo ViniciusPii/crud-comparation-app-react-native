@@ -1,8 +1,15 @@
 import React, {useState} from 'react';
 
-import firebase from '../../services/firebase';
+import firebase from '../../../services/firebase';
 
-import {Layout, Input, Button, Container, Text} from '../../components';
+import {
+  Layout,
+  Input,
+  Button,
+  Clear,
+  Text,
+  Container,
+} from '../../../components';
 
 const CreateAccount = () => {
   const [name, setName] = useState('');
@@ -61,29 +68,37 @@ const CreateAccount = () => {
   return (
     <Layout>
       <Container>
-        <Text
-          text="Crie sua conta, é rapidinho ;)"
-          mb={40}
-          fs={20}
-          textColor="purple600"
-        />
-        <Input placeholder="Nome" value={name} onChangeText={t => setName(t)} />
-        <Input
-          placeholder="Email"
-          value={email}
-          onChangeText={t => setEmail(t)}
-          autoCapitalize="none"
-        />
-        <Input
-          placeholder="Senha"
-          value={password}
-          onChangeText={t => setPassword(t)}
-        />
-        <Button
-          text="Cadastrar"
-          onPress={handleCreateAccount}
-          loading={loading}
-        />
+        <Clear>
+          <Text
+            text="Crie sua conta, é rapidinho ;)"
+            mb={40}
+            fs={20}
+            textColor="purple600"
+          />
+          <Input
+            placeholder="Nome"
+            value={name}
+            autoCompleteType="off"
+            autoCorrect={false}
+            onChangeText={t => setName(t)}
+          />
+          <Input
+            placeholder="Email"
+            value={email}
+            onChangeText={t => setEmail(t)}
+            autoCapitalize="none"
+          />
+          <Input
+            placeholder="Senha"
+            value={password}
+            onChangeText={t => setPassword(t)}
+          />
+          <Button
+            text="Cadastrar"
+            onPress={handleCreateAccount}
+            loading={loading}
+          />
+        </Clear>
       </Container>
     </Layout>
   );

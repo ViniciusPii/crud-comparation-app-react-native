@@ -11,10 +11,3 @@ export const Status = styled(StatusBar).attrs(({theme, bgColor}) => ({
   barStyle: 'light-content',
   backgroundColor: theme.purple600,
 }))``;
-
-export const Container = styled.KeyboardAvoidingView`
-  flex: 1;
-  width: 90%;
-  justify-content: center;
-  align-items: center;
-`;

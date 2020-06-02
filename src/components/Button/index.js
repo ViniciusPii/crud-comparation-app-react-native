@@ -30,7 +30,7 @@ const Button = ({...props}) => {
 };
 
 Button.defaultProps = {
-  mt: 30,
+  mt: 0,
   mr: 0,
   mb: 0,
   ml: 0,

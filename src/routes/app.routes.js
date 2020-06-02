@@ -4,30 +4,23 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import {ThemeContext} from 'styled-components';
 
-import Login from '../views/Auth/Login';
-import CreateAccount from '../views/Auth/CreateAccount';
+import Home from '../views/App/Home';
 
-const AuthStack = createStackNavigator();
+const AppStack = createStackNavigator();
 
-const AuthRoutes = () => {
+const AppRoutes = () => {
   const theme = useContext(ThemeContext);
 
   return (
-    <AuthStack.Navigator screenOptions={{gestureEnabled: false}}>
-      <AuthStack.Screen
-        name="Login"
-        component={Login}
-        options={{headerShown: false}}
-      />
-      <AuthStack.Screen
+    <AppStack.Navigator screenOptions={{gestureEnabled: false}}>
+      <AppStack.Screen
         name="CreateAccount"
-        component={CreateAccount}
+        component={Home}
         options={{
           headerBackTitleVisible: false,
-          headerTitle: 'Voltar',
+          headerTitle: 'Bem-Vindo',
           headerTitleStyle: {
             textAlign: 'center',
-            marginRight: Platform.OS === 'ios' ? 0 : 50,
           },
           headerTintColor: theme.white,
           headerStyle: {
@@ -35,8 +28,8 @@ const AuthRoutes = () => {
           },
         }}
       />
-    </AuthStack.Navigator>
+    </AppStack.Navigator>
   );
 };
 
-export default AuthRoutes;
+export default AppRoutes;
