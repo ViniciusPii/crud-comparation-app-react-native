@@ -1,9 +1,9 @@
 import Button from './Button';
 import Container from './Container';
-import CreateLink from './CreateLink';
+import Footer from './Footer';
 import Icon from './Icon';
 import Input from './Input';
 import Layout from './Layout';
 import Text from './Text';
 
-export {Button, Container, CreateLink, Icon, Input, Layout, Text};
+export {Button, Container, Footer, Icon, Input, Layout, Text};

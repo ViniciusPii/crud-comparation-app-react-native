@@ -4,6 +4,7 @@ import {ActivityIndicator} from 'react-native';
 export const Button = styled.TouchableOpacity`
   width: 100%;
   height: 55px;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: ${({mt}) => mt}px;
@@ -11,16 +12,30 @@ export const Button = styled.TouchableOpacity`
   margin-right: ${({mr}) => mr}px;
   margin-left: ${({ml}) => ml}px;
   border-radius: 8px;
-  background-color: ${({theme}) => theme.yellow};
+  background-color: ${({theme, bgColor}) => theme[bgColor]};
 `;
 
-export const LoadingButton = styled(ActivityIndicator).attrs(({theme}) => ({
-  color: theme.purple600,
-  size: 'large',
-}))``;
+export const LoadingButton = styled(ActivityIndicator).attrs(
+  ({theme, loadingColor}) => ({
+    color: theme[loadingColor],
+    size: 'large',
+  }),
+)``;
 
 export const TextButton = styled.Text`
   font-size: 18px;
   font-weight: 700;
-  color: ${({theme}) => theme.purple600};
+  color: ${({theme, textColor}) => theme[textColor]};
+`;
+
+// Botão estilo link
+
+export const ButtonLink = styled.TouchableOpacity`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const TextButtonLink = styled.Text`
+  font-size: 18px;
+  color: ${({theme, textLinkColor}) => theme[textLinkColor]};
 `;

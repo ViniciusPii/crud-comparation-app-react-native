@@ -3,14 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import firebase from '../../services/firebase';
 
-import {
-  Layout,
-  Icon,
-  Button,
-  CreateLink,
-  Input,
-  Container,
-} from '../../components';
+import {Layout, Icon, Button, Input, Container, Footer} from '../../components';
 
 const Login = () => {
   const navigation = useNavigation();
@@ -61,7 +54,15 @@ const Login = () => {
         />
         <Button text="Login" onPress={handleLogin} loading={loading} />
       </Container>
-      <CreateLink onPress={() => navigation.navigate('CreateAccount')} />
+      <Footer bgColor="purple800">
+        <Button
+          type="link"
+          text="Crie já sua conta!"
+          icon="exit-to-app"
+          iconMr={5}
+          onPress={() => navigation.navigate('CreateAccount')}
+        />
+      </Footer>
     </Layout>
   );
 };
