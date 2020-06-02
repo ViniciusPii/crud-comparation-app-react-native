@@ -18,7 +18,7 @@ const Button = ({...props}) => {
 
   if (type === 'link') {
     return (
-      <S.ButtonLink>
+      <S.ButtonLink {...props}>
         <Icon
           name={icon}
           iconColor={iconColor}

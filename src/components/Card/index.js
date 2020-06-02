@@ -6,7 +6,7 @@ import Icon from '../Icon';
 import Button from '../Button';
 
 const Card = ({...props}) => {
-  const {children} = props;
+  const {onPress} = props;
 
   return (
     <S.Card {...props}>
@@ -28,6 +28,7 @@ const Card = ({...props}) => {
             mr={10}
             iconColor="purple600"
             iconMr={10}
+            onPress={onPress}
           />
           <Button type="link" icon="trash-can" iconColor="purple600" />
         </S.CardActions>
