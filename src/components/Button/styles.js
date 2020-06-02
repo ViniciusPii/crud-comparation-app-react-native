@@ -39,3 +39,19 @@ export const TextButtonLink = styled.Text`
   font-size: 18px;
   color: ${({theme, textLinkColor}) => theme[textLinkColor]};
 `;
+
+// Botão Estilo Circulo
+
+export const ButtonCircle = styled.TouchableOpacity`
+  width: 64px;
+  height: 64px;
+  align-items: center;
+  justify-content: center;
+  margin-top: ${({mt}) => mt}px;
+  margin-bottom: ${({mb}) => mb}px;
+  margin-right: ${({mr}) => mr}px;
+  margin-left: ${({ml}) => ml}px;
+  border-radius: 32px;
+  border: 3px solid ${({theme}) => theme.white};
+  background-color: ${({theme, bgColor}) => theme[bgColor]};
+`;

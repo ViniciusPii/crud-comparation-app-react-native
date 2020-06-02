@@ -31,6 +31,20 @@ const Button = ({...props}) => {
     );
   }
 
+  if (type === 'circle') {
+    return (
+      <S.ButtonCircle {...props}>
+        <Icon
+          name={icon}
+          iconColor={iconColor}
+          fs={size}
+          mr={iconMr}
+          ml={iconMl}
+        />
+      </S.ButtonCircle>
+    );
+  }
+
   return (
     <S.Button {...props}>
       {loading ? (
