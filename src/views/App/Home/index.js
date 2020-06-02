@@ -1,14 +1,12 @@
 import React from 'react';
-import {View, Text} from 'react-native';
-import {Layout, Footer, Container, Button} from '../../../components';
+
+import {Layout, Footer, Container, Card} from '../../../components';
 
 const Home = () => {
   return (
-    <Layout bgColor="purple600">
-      <Container bgColor="white" w="100%">
-        <Container>
-          <Button text="Deu certo" />
-        </Container>
+    <Layout>
+      <Container justify="flex-start" mt={40}>
+        <Card elevation={8} />
         <Footer />
       </Container>
     </Layout>

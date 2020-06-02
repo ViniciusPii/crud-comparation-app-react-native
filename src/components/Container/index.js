@@ -19,6 +19,10 @@ const Container = ({...props}) => {
 Container.defaultProps = {
   w: '90%',
   h: 'auto',
+  mt: 0,
+  mr: 0,
+  mb: 0,
+  ml: 0,
   justify: 'center',
   bgColor: 'ghost',
 };

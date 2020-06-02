@@ -44,7 +44,7 @@ const Login = () => {
   };
 
   return (
-    <Layout bgColor="purple600">
+    <Layout bgColor="purple600" footerColorIOS="purple800">
       <Container>
         <Clear>
           <Icon name="account-circle" fs={75} mb={40} />
@@ -68,8 +68,8 @@ const Login = () => {
             type="link"
             text="Crie já sua conta!"
             icon="exit-to-app"
-            iconMr={5}
             onPress={() => navigation.navigate('CreateAccount')}
+            iconMr={5}
           />
         </Footer>
       </Container>

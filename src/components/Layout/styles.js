@@ -11,3 +11,11 @@ export const Status = styled(StatusBar).attrs(({theme, bgColor}) => ({
   barStyle: 'light-content',
   backgroundColor: theme.purple600,
 }))``;
+
+export const StatusBarIOS = styled.SafeAreaView`
+  background-color: ${({theme, barColorIOS}) => theme[barColorIOS]};
+`;
+
+export const FooterIOS = styled.SafeAreaView`
+  background-color: ${({theme, footerColorIOS}) => theme[footerColorIOS]};
+`;

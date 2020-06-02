@@ -4,12 +4,28 @@ import * as S from './styles';
 import Icon from '../Icon';
 
 const Button = ({...props}) => {
-  const {text, loading, type, textColor, icon, size, iconColor, iconMr} = props;
+  const {
+    text,
+    loading,
+    type,
+    textColor,
+    icon,
+    iconColor,
+    size,
+    iconMr,
+    iconMl,
+  } = props;
 
   if (type === 'link') {
     return (
       <S.ButtonLink>
-        <Icon name={icon} fs={size} iconColor={iconColor} mr={iconMr} />
+        <Icon
+          name={icon}
+          iconColor={iconColor}
+          fs={size}
+          mr={iconMr}
+          ml={iconMl}
+        />
         <S.TextButtonLink {...props}>{text}</S.TextButtonLink>
       </S.ButtonLink>
     );
@@ -21,7 +37,13 @@ const Button = ({...props}) => {
         <S.LoadingButton loadingColor={textColor} />
       ) : (
         <>
-          <Icon name={icon} fs={size} iconColor={iconColor} mt={iconMr} />
+          <Icon
+            name={icon}
+            fs={size}
+            iconColor={iconColor}
+            mr={iconMr}
+            ml={iconMl}
+          />
           <S.TextButton {...props}>{text}</S.TextButton>
         </>
       )}
@@ -30,14 +52,13 @@ const Button = ({...props}) => {
 };
 
 Button.defaultProps = {
-  mt: 0,
+  mt: 30,
   mr: 0,
   mb: 0,
   ml: 0,
   bgColor: 'yellow',
   textColor: 'purple600',
   textLinkColor: 'yellow',
-  fs: 20,
   iconColor: 'yellow',
 };
 
