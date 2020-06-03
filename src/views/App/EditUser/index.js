@@ -3,7 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import firebase from '../../../services/firebase';
 
-import {Layout, Input, Container, Button} from '../../../components';
+import {Layout, Input, Container, Button, Clear} from '../../../components';
 
 const EditUser = ({route}) => {
   const navigation = useNavigation();
@@ -46,19 +46,21 @@ const EditUser = ({route}) => {
   return (
     <Layout footerColorIOS="white">
       <Container>
-        <Input
-          type="outline"
-          label="Nome"
-          value={name}
-          onChangeText={t => setName(t)}
-        />
-        <Input
-          type="outline"
-          label="Cargo"
-          value={office}
-          onChangeText={t => setOffice(t)}
-        />
-        <Button text="Editar" onPress={handleEdit} />
+        <Clear>
+          <Input
+            type="outline"
+            label="Nome"
+            value={name}
+            onChangeText={t => setName(t)}
+          />
+          <Input
+            type="outline"
+            label="Cargo"
+            value={office}
+            onChangeText={t => setOffice(t)}
+          />
+          <Button text="Editar" onPress={handleEdit} />
+        </Clear>
       </Container>
     </Layout>
   );
