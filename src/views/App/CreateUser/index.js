@@ -1,11 +1,15 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Layout, Input, Container, Button} from '../../../components';
 
 const CreateUser = () => {
   return (
-    <View>
-      <Text>CreateUser</Text>
-    </View>
+    <Layout footerColorIOS="white">
+      <Container>
+        <Input type="outline" label="Nome" />
+        <Input type="outline" label="Cargo" />
+        <Button text="Cadastrar" onPress={() => {}} />
+      </Container>
+    </Layout>
   );
 };
 

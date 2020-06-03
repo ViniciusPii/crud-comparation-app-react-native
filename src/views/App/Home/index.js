@@ -1,14 +1,7 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-import {
-  Layout,
-  Footer,
-  Container,
-  Card,
-  Button,
-  Icon,
-} from '../../../components';
+import {Layout, Footer, Container, Card, Button} from '../../../components';
 
 const Home = () => {
   const navigation = useNavigation();

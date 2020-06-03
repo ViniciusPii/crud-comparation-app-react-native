@@ -20,7 +20,7 @@ const AppRoutes = () => {
         component={Home}
         options={{
           headerBackTitleVisible: false,
-          headerTitle: 'Bem-Vindo',
+          headerTitle: 'Usuários',
           headerTitleStyle: {
             textAlign: 'center',
           },
