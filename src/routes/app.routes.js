@@ -16,7 +16,7 @@ const AppRoutes = () => {
   return (
     <AppStack.Navigator screenOptions={{gestureEnabled: false}}>
       <AppStack.Screen
-        name="CreateAccount"
+        name="Home"
         component={Home}
         options={{
           headerBackTitleVisible: false,

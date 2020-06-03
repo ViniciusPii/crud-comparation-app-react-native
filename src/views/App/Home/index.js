@@ -3,14 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 
 import firebase from '../../../services/firebase';
 
-import {
-  Layout,
-  Footer,
-  Container,
-  List,
-  Button,
-  Card,
-} from '../../../components';
+import {Layout, Footer, Container, List, Button} from '../../../components';
 
 const Home = () => {
   const navigation = useNavigation();

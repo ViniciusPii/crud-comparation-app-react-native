@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 import firebase from '../../../services/firebase';
 
 import {Layout, Input, Container, Button} from '../../../components';
 
 const CreateUser = () => {
+  const navigation = useNavigation();
+
   const [name, setName] = useState('');
   const [office, setOffice] = useState('');
 
@@ -16,12 +19,21 @@ const CreateUser = () => {
     .push().key;
 
   const handleSubmitAdd = () => {
+    if (name === '' || office === '') {
+      alert('Preencha todos os Dados');
+      return;
+    }
+
     firebase
       .database()
       .ref('users')
       .child(uid)
       .child(key)
       .set({name, office});
+
+    setName('');
+    setOffice('');
+    navigation.navigate('Home');
   };
 
   return (
