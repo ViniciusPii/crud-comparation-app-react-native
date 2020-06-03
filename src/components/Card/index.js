@@ -6,7 +6,8 @@ import Icon from '../Icon';
 import Button from '../Button';
 
 const Card = ({...props}) => {
-  const {onPress} = props;
+  const {onPress, data} = props;
+  const {name, office} = data;
 
   return (
     <S.Card {...props}>
@@ -14,11 +15,11 @@ const Card = ({...props}) => {
         <S.CardContent>
           <S.CardInfo>
             <Icon name="account" iconColor="purple600" mr={10} />
-            <S.CardText>Vinicius</S.CardText>
+            <S.CardText>{name}</S.CardText>
           </S.CardInfo>
           <S.CardInfo>
             <Icon name="briefcase" iconColor="purple600" mr={10} />
-            <S.CardText>Desenvolvedor Front-End</S.CardText>
+            <S.CardText>{office}</S.CardText>
           </S.CardInfo>
         </S.CardContent>
         <S.CardActions>

@@ -66,7 +66,7 @@ const CreateAccount = () => {
   };
 
   return (
-    <Layout>
+    <Layout footerColorIOS="white">
       <Container>
         <Clear>
           <Text

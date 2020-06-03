@@ -1,15 +1,48 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-import {Layout, Footer, Container, Card, Button} from '../../../components';
+import firebase from '../../../services/firebase';
+
+import {
+  Layout,
+  Footer,
+  Container,
+  List,
+  Button,
+  Card,
+} from '../../../components';
+import {FlatList} from 'react-native';
 
 const Home = () => {
   const navigation = useNavigation();
+  const [users, setUsers] = useState([]);
+
+  let uid = firebase.auth().currentUser.uid;
+
+  useState(() => {
+    firebase
+      .database()
+      .ref('users')
+      .child(uid)
+      .on('value', snap => {
+        setUsers([]);
+
+        snap.forEach(item => {
+          let NewUses = {
+            key: item.key,
+            name: item.val().name,
+            office: item.val().office,
+          };
+
+          setUsers(oldUsers => [...oldUsers, NewUses]);
+        });
+      });
+  });
 
   return (
     <Layout>
-      <Container justify="flex-start" mt={40}>
-        <Card elevation={8} onPress={() => navigation.navigate('EditUser')} />
+      <Container justify="flex-start">
+        <List data={users} keyExtractor={users.key} />
         <Footer>
           <Button
             type="circle"

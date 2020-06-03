@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+
 import {Layout, Input, Container, Button} from '../../../components';
 
-const EditUser = () => {
+const EditUser = ({route}) => {
+  const {key} = route.params;
+
+  useEffect(() => {
+    alert(key);
+  });
+
   return (
     <Layout footerColorIOS="white">
       <Container>

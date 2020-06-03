@@ -9,6 +9,7 @@ const Button = ({...props}) => {
     loading,
     type,
     textColor,
+    textLinkColor,
     icon,
     iconColor,
     size,
@@ -26,7 +27,9 @@ const Button = ({...props}) => {
           mr={iconMr}
           ml={iconMl}
         />
-        <S.TextButtonLink {...props}>{text}</S.TextButtonLink>
+        <S.TextButtonLink textLinkColor={textLinkColor}>
+          {text}
+        </S.TextButtonLink>
       </S.ButtonLink>
     );
   }
@@ -58,7 +61,7 @@ const Button = ({...props}) => {
             mr={iconMr}
             ml={iconMl}
           />
-          <S.TextButton {...props}>{text}</S.TextButton>
+          <S.TextButton textColor={textColor}>{text}</S.TextButton>
         </>
       )}
     </S.Button>

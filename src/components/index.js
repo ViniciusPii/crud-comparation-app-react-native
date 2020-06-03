@@ -6,6 +6,18 @@ import Footer from './Footer';
 import Icon from './Icon';
 import Input from './Input';
 import Layout from './Layout';
+import List from './List';
 import Text from './Text';
 
-export {Button, Card, Container, Clear, Footer, Icon, Input, Layout, Text};
+export {
+  Button,
+  Card,
+  Container,
+  Clear,
+  Footer,
+  Icon,
+  Input,
+  Layout,
+  List,
+  Text,
+};
