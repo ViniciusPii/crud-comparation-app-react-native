@@ -11,7 +11,6 @@ import {
   Button,
   Card,
 } from '../../../components';
-import {FlatList} from 'react-native';
 
 const Home = () => {
   const navigation = useNavigation();
@@ -29,6 +28,7 @@ const Home = () => {
 
         snap.forEach(item => {
           let NewUses = {
+            uid,
             key: item.key,
             name: item.val().name,
             office: item.val().office,
@@ -47,9 +47,9 @@ const Home = () => {
           <Button
             type="circle"
             mt={-60}
-            bgColor="purple600"
+            bgColor="yellow"
             icon="plus"
-            iconColor="white"
+            iconColor="purple600"
             onPress={() => navigation.navigate('CreateUser')}
           />
         </Footer>

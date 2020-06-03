@@ -1,4 +1,7 @@
 import React from 'react';
+import {useNavigation} from '@react-navigation/native';
+
+import firebase from '../../services/firebase';
 
 import * as S from './styles';
 
@@ -6,8 +9,23 @@ import Icon from '../Icon';
 import Button from '../Button';
 
 const Card = ({...props}) => {
-  const {onPress, data} = props;
-  const {name, office} = data;
+  const navigation = useNavigation();
+
+  const {data} = props;
+  const {name, office, key, uid} = data;
+
+  const handleEdit = () => {
+    navigation.navigate('EditUser', {key});
+  };
+
+  const handleDelete = () => {
+    firebase
+      .database()
+      .ref('users')
+      .child(uid)
+      .child(key)
+      .remove();
+  };
 
   return (
     <S.Card {...props}>
@@ -29,9 +47,14 @@ const Card = ({...props}) => {
             mr={10}
             iconColor="purple600"
             iconMr={10}
-            onPress={onPress}
+            onPress={handleEdit}
           />
-          <Button type="link" icon="trash-can" iconColor="purple600" />
+          <Button
+            type="link"
+            icon="trash-can"
+            iconColor="purple600"
+            onPress={handleDelete}
+          />
         </S.CardActions>
       </S.CardContainer>
     </S.Card>
@@ -42,7 +65,7 @@ Card.defaultProps = {
   bgColor: 'white',
   mt: 0,
   mr: 0,
-  mb: 20,
+  mb: 15,
   ml: 0,
 };
 

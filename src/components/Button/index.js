@@ -43,6 +43,7 @@ const Button = ({...props}) => {
           fs={size}
           mr={iconMr}
           ml={iconMl}
+          mt={3}
         />
       </S.ButtonCircle>
     );
