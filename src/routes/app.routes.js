@@ -29,7 +29,7 @@ const AppRoutes = () => {
           headerRight: () => (
             <Button
               type="link"
-              icon="logout"
+              icon="exit-to-app"
               iconColor="white"
               onPress={logout}
             />
