@@ -67,7 +67,7 @@ const Login = () => {
           <Button
             type="link"
             text="Crie já sua conta!"
-            icon="exit-to-app"
+            icon="arrow-right-thick"
             onPress={() => navigation.navigate('CreateAccount')}
             iconMr={5}
           />

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
 import firebase from '../../../services/firebase';
@@ -8,22 +8,10 @@ import {Layout, Input, Container, Button, Clear} from '../../../components';
 const EditUser = ({route}) => {
   const navigation = useNavigation();
 
-  const {key, uid} = route.params;
+  const {key, uid, userName, userOffice} = route.params;
 
-  const [name, setName] = useState('');
-  const [office, setOffice] = useState('');
-
-  useEffect(() => {
-    firebase
-      .database()
-      .ref('users')
-      .child(uid)
-      .child(key)
-      .once('value', snap => {
-        setName(snap.val().name);
-        setOffice(snap.val().office);
-      });
-  }, [key, uid]);
+  const [name, setName] = useState(userName);
+  const [office, setOffice] = useState(userOffice);
 
   const handleEdit = () => {
     if (name === '' || office === '') {

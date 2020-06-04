@@ -3,15 +3,25 @@ import {useNavigation} from '@react-navigation/native';
 
 import firebase from '../../../services/firebase';
 
-import {Layout, Footer, Container, List, Button} from '../../../components';
+import {
+  Layout,
+  Footer,
+  Container,
+  List,
+  Button,
+  Text,
+} from '../../../components';
+import {ActivityIndicator} from 'react-native';
 
 const Home = () => {
   const navigation = useNavigation();
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   let uid = firebase.auth().currentUser.uid;
 
   useState(() => {
+    setLoading(true);
     firebase
       .database()
       .ref('users')
@@ -29,8 +39,44 @@ const Home = () => {
 
           setUsers(oldUsers => [...oldUsers, NewUses]);
         });
+        setLoading(false);
       });
   });
+
+  if (loading) {
+    return (
+      <Layout>
+        <Container>
+          <ActivityIndicator size="large" color="red" />
+          <Footer />
+        </Container>
+      </Layout>
+    );
+  }
+
+  if (users.length === 0) {
+    return (
+      <Layout>
+        <Text
+          w="70%"
+          fs={20}
+          text="Você ainda não tem usuários cadastrados ;)"
+          textColor="purple600"
+          mt={40}
+        />
+        <Footer>
+          <Button
+            type="circle"
+            mt={-60}
+            bgColor="yellow"
+            icon="plus"
+            iconColor="purple600"
+            onPress={() => navigation.navigate('CreateUser')}
+          />
+        </Footer>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>

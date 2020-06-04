@@ -15,7 +15,12 @@ const Card = ({...props}) => {
   const {name, office, key, uid} = data;
 
   const handleEdit = () => {
-    navigation.navigate('EditUser', {key, uid});
+    navigation.navigate('EditUser', {
+      key,
+      uid,
+      userName: name,
+      userOffice: office,
+    });
   };
 
   const handleDelete = () => {
