@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
@@ -16,7 +17,13 @@ const EditUser = ({route}) => {
   const [office, setOffice] = useState(userOffice);
 
   const handleEdit = () => {
+    if (name === '' || office === '') {
+      alert('Preencha todos os Campos');
+      return;
+    }
+
     editUser(name, office, uid, key);
+
     navigation.navigate('Home');
   };
 

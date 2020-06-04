@@ -13,9 +13,16 @@ const CreateUser = () => {
   const [office, setOffice] = useState('');
 
   const handleSubmitAdd = () => {
+    if (name === '' || office === '') {
+      alert('Preencha todos os Dados');
+      return;
+    }
+
     createUser(name, office);
+
     setName('');
     setOffice('');
+
     navigation.navigate('Home');
   };
 

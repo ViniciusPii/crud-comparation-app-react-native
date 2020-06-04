@@ -7,6 +7,7 @@ const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
   const [loading, setLoading] = useState(false);
+  const [loadingButton, setLoadingButton] = useState(false);
   const [signed, setSigned] = useState(false);
 
   // verifica usuário
@@ -20,11 +21,11 @@ const AuthProvider = ({children}) => {
 
   // loga usuário
   const login = (email, password) => {
-    setLoading(true);
+    setLoadingButton(true);
 
     if (email === '' || password === '') {
       alert('Preencha todos os campos!');
-      setLoading(false);
+      setLoadingButton(false);
       return;
     }
 
@@ -33,17 +34,17 @@ const AuthProvider = ({children}) => {
       .signInWithEmailAndPassword(email, password)
       .then(() => {
         alert('Logado com sucesso!');
-        setLoading(false);
+        setLoadingButton(false);
       })
       .catch(() => {
         alert('Ah não, usuário ou senha incorretos!');
-        setLoading(false);
+        setLoadingButton(false);
       });
   };
 
   // cria usuário
   const createAccount = (name, email, password) => {
-    setLoading(true);
+    setLoadingButton(true);
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -62,12 +63,12 @@ const AuthProvider = ({children}) => {
           });
 
         alert('Cadastrado com sucesso!');
-        setLoading(false);
+        setLoadingButton(false);
       })
       .catch(erro => {
         if (name === '' || email === '' || password === '') {
           alert('Preencha todos os campos!');
-          setLoading(false);
+          setLoadingButton(false);
           return;
         }
 
@@ -85,7 +86,7 @@ const AuthProvider = ({children}) => {
             alert('Não foi possível cadastrar o Usuário');
             break;
         }
-        setLoading(false);
+        setLoadingButton(false);
       });
   };
 
@@ -98,9 +99,8 @@ const AuthProvider = ({children}) => {
     <AuthContext.Provider
       value={{
         loading,
-        setLoading,
         signed,
-        setSigned,
+        loadingButton,
         login,
         createAccount,
         logout,
@@ -112,8 +112,15 @@ const AuthProvider = ({children}) => {
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  const {signed, loading, login, createAccount, logout} = context;
-  return {signed, loading, login, createAccount, logout};
+  const {
+    signed,
+    loadingButton,
+    loading,
+    login,
+    createAccount,
+    logout,
+  } = context;
+  return {signed, loadingButton, loading, login, createAccount, logout};
 };
 
 export default AuthProvider;

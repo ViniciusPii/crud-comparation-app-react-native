@@ -18,10 +18,6 @@ const AppProvider = ({children}) => {
       .child(uid)
       .push().key;
 
-    if (name === '' || office === '') {
-      alert('Preencha todos os Dados');
-      return;
-    }
     firebase
       .database()
       .ref('users')
@@ -32,10 +28,6 @@ const AppProvider = ({children}) => {
 
   // edita um usuário
   const editUser = (name, office, uid, key) => {
-    if (name === '' || office === '') {
-      alert('Preencha todos os Campos');
-    }
-
     firebase
       .database()
       .ref('users')

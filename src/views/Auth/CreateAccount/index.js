@@ -12,7 +12,7 @@ import {
 } from '../../../components';
 
 const CreateAccount = () => {
-  const {loading, createAccount} = useAuth();
+  const {loadingButton, createAccount} = useAuth();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -53,7 +53,7 @@ const CreateAccount = () => {
           <Button
             text="Cadastrar"
             onPress={handleCreateAccount}
-            loading={loading}
+            loading={loadingButton}
           />
         </Clear>
       </Container>

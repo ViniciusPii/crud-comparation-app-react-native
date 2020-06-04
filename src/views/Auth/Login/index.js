@@ -16,7 +16,7 @@ import {
 const Login = () => {
   const navigation = useNavigation();
 
-  const {loading, login} = useAuth();
+  const {loadingButton, login} = useAuth();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,7 +43,7 @@ const Login = () => {
             autoCapitalize="none"
             secureTextEntry
           />
-          <Button text="Login" onPress={handleLogin} loading={loading} />
+          <Button text="Login" onPress={handleLogin} loading={loadingButton} />
         </Clear>
         <Footer bgColor="purple800">
           <Button
