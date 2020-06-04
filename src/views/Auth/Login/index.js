@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-import firebase from '../../../services/firebase';
+import {useAuth} from '../../../contexts/AuthContext';
 
 import {
   Layout,
@@ -16,31 +16,13 @@ import {
 const Login = () => {
   const navigation = useNavigation();
 
+  const {loading, login} = useAuth();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const [loading, setLoading] = useState(false);
-
   const handleLogin = () => {
-    setLoading(true);
-
-    if (email === '' || password === '') {
-      alert('Preencha todos os campos!');
-      setLoading(false);
-      return;
-    }
-
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email, password)
-      .then(() => {
-        alert('Logado com sucesso!');
-        setLoading(false);
-      })
-      .catch(() => {
-        alert('Ah não, usuário ou senha incorretos!');
-        setLoading(false);
-      });
+    login(email, password);
   };
 
   return (
