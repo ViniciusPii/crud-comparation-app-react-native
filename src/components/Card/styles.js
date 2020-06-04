@@ -18,7 +18,9 @@ export const CardContainer = styled.View`
   padding: 5px 10px;
 `;
 
-export const CardContent = styled.View``;
+export const CardContent = styled.View`
+  flex: 1;
+`;
 
 export const CardInfo = styled.View`
   flex-direction: row;
@@ -27,6 +29,7 @@ export const CardInfo = styled.View`
 `;
 
 export const CardText = styled.Text`
+  flex: 1;
   font-size: 18px;
   color: ${({theme}) => theme.neutral700};
 `;

@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 import React, {createContext, useContext, useState} from 'react';
 
 import firebase from '../services/firebase';
