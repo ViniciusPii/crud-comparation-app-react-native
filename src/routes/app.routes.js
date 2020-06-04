@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import {Platform} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import firebase from '../services/firebase';
+import {useAuth} from '../contexts/AuthContext';
 
 import {ThemeContext} from 'styled-components';
 
@@ -16,9 +16,7 @@ const AppStack = createStackNavigator();
 const AppRoutes = () => {
   const theme = useContext(ThemeContext);
 
-  const handleLogout = () => {
-    firebase.auth().signOut();
-  };
+  const {logout} = useAuth();
 
   return (
     <AppStack.Navigator screenOptions={{gestureEnabled: false}}>
@@ -33,7 +31,7 @@ const AppRoutes = () => {
               type="link"
               icon="logout"
               iconColor="white"
-              onPress={handleLogout}
+              onPress={logout}
             />
           ),
           headerRightContainerStyle: {

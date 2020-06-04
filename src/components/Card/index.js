@@ -1,15 +1,17 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-import firebase from '../../services/firebase';
-
 import * as S from './styles';
+
+import {useApp} from '../../contexts/AppContext';
 
 import Icon from '../Icon';
 import Button from '../Button';
 
 const Card = ({...props}) => {
   const navigation = useNavigation();
+
+  const {deleteUser} = useApp();
 
   const {data} = props;
   const {name, office, key, uid} = data;
@@ -24,12 +26,7 @@ const Card = ({...props}) => {
   };
 
   const handleDelete = () => {
-    firebase
-      .database()
-      .ref('users')
-      .child(uid)
-      .child(key)
-      .remove();
+    deleteUser(uid, key);
   };
 
   return (

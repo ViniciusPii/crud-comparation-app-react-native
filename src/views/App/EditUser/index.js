@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-import firebase from '../../../services/firebase';
+import {useApp} from '../../../contexts/AppContext';
 
 import {Layout, Input, Container, Button, Clear} from '../../../components';
 
 const EditUser = ({route}) => {
   const navigation = useNavigation();
+
+  const {editUser} = useApp();
 
   const {key, uid, userName, userOffice} = route.params;
 
@@ -14,20 +16,7 @@ const EditUser = ({route}) => {
   const [office, setOffice] = useState(userOffice);
 
   const handleEdit = () => {
-    if (name === '' || office === '') {
-      alert('Preencha todos os Campos');
-    }
-
-    firebase
-      .database()
-      .ref('users')
-      .child(uid)
-      .child(key)
-      .set({
-        name,
-        office,
-      });
-
+    editUser(name, office, uid, key);
     navigation.navigate('Home');
   };
 

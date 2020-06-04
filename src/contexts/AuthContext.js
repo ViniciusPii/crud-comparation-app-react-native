@@ -86,9 +86,22 @@ const AuthProvider = ({children}) => {
       });
   };
 
+  // desloga um usuário
+  const logout = () => {
+    firebase.auth().signOut();
+  };
+
   return (
     <AuthContext.Provider
-      value={{loading, setLoading, signed, setSigned, login, createAccount}}>
+      value={{
+        loading,
+        setLoading,
+        signed,
+        setSigned,
+        login,
+        createAccount,
+        logout,
+      }}>
       {children}
     </AuthContext.Provider>
   );
@@ -96,8 +109,8 @@ const AuthProvider = ({children}) => {
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  const {signed, loading, login, createAccount} = context;
-  return {signed, loading, login, createAccount};
+  const {signed, loading, login, createAccount, logout} = context;
+  return {signed, loading, login, createAccount, logout};
 };
 
 export default AuthProvider;
