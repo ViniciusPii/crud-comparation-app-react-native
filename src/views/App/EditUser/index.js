@@ -11,7 +11,7 @@ const EditUser = ({route}) => {
 
   const {editUser} = useApp();
 
-  const {key, uid, userName, userOffice} = route.params;
+  const {key, userName, userOffice} = route.params;
 
   const [name, setName] = useState(userName);
   const [office, setOffice] = useState(userOffice);
@@ -22,7 +22,7 @@ const EditUser = ({route}) => {
       return;
     }
 
-    editUser(name, office, uid, key);
+    editUser(name, office, key);
 
     navigation.navigate('Home');
   };

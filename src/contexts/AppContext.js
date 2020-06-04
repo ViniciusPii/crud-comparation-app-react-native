@@ -26,7 +26,9 @@ const AppProvider = ({children}) => {
   };
 
   // edita um usuário
-  const editUser = (name, office, uid, key) => {
+  const editUser = (name, office, key) => {
+    let uid = firebase.auth().currentUser.uid;
+
     firebase
       .database()
       .ref('users')
@@ -39,7 +41,9 @@ const AppProvider = ({children}) => {
   };
 
   // deleta um usuário
-  const deleteUser = (uid, key) => {
+  const deleteUser = key => {
+    let uid = firebase.auth().currentUser.uid;
+
     firebase
       .database()
       .ref('users')
@@ -61,14 +65,13 @@ const AppProvider = ({children}) => {
         setUsers([]);
 
         snap.forEach(item => {
-          let NewUses = {
-            uid,
+          let NewUsers = {
             key: item.key,
             name: item.val().name,
             office: item.val().office,
           };
 
-          setUsers(oldUsers => [...oldUsers, NewUses]);
+          setUsers(oldUsers => [...oldUsers, NewUsers]);
         });
         setLoading(false);
       });

@@ -14,19 +14,18 @@ const Card = ({...props}) => {
   const {deleteUser} = useApp();
 
   const {data} = props;
-  const {name, office, key, uid} = data;
+  const {name, office, key} = data;
 
   const handleEdit = () => {
     navigation.navigate('EditUser', {
       key,
-      uid,
       userName: name,
       userOffice: office,
     });
   };
 
   const handleDelete = () => {
-    deleteUser(uid, key);
+    deleteUser(key);
   };
 
   return (
