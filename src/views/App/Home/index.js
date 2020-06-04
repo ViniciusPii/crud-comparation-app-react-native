@@ -47,7 +47,7 @@ const Home = () => {
     return (
       <Layout>
         <Container>
-          <ActivityIndicator size="large" color="red" />
+          <ActivityIndicator size="large" color="purple" />
           <Footer />
         </Container>
       </Layout>

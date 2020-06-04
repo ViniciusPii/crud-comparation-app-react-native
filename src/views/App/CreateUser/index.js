@@ -1,36 +1,19 @@
 import React, {useState} from 'react';
 import {useNavigation} from '@react-navigation/native';
 
-import firebase from '../../../services/firebase';
-
 import {Layout, Input, Container, Button, Clear} from '../../../components';
+import {useApp} from '../../../contexts/AppContext';
 
 const CreateUser = () => {
   const navigation = useNavigation();
 
+  const {createUser} = useApp();
+
   const [name, setName] = useState('');
   const [office, setOffice] = useState('');
 
-  const uid = firebase.auth().currentUser.uid;
-  const key = firebase
-    .database()
-    .ref('users')
-    .child(uid)
-    .push().key;
-
   const handleSubmitAdd = () => {
-    if (name === '' || office === '') {
-      alert('Preencha todos os Dados');
-      return;
-    }
-
-    firebase
-      .database()
-      .ref('users')
-      .child(uid)
-      .child(key)
-      .set({name, office});
-
+    createUser(name, office);
     setName('');
     setOffice('');
     navigation.navigate('Home');
