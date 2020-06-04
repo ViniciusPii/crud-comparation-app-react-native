@@ -1,10 +1,14 @@
-import React, {createContext, useContext} from 'react';
+/* eslint-disable no-alert */
+import React, {createContext, useContext, useState} from 'react';
 
 import firebase from '../services/firebase';
 
 const AppContext = createContext();
 
-const AppProvider = ({children, route}) => {
+const AppProvider = ({children}) => {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   // cria um usuário
   const createUser = (name, office) => {
     let uid = firebase.auth().currentUser.uid;
@@ -53,8 +57,35 @@ const AppProvider = ({children, route}) => {
       .remove();
   };
 
+  // lista os usuários
+  const listUsers = () => {
+    let uid = firebase.auth().currentUser.uid;
+
+    setLoading(true);
+    firebase
+      .database()
+      .ref('users')
+      .child(uid)
+      .on('value', snap => {
+        setUsers([]);
+
+        snap.forEach(item => {
+          let NewUses = {
+            uid,
+            key: item.key,
+            name: item.val().name,
+            office: item.val().office,
+          };
+
+          setUsers(oldUsers => [...oldUsers, NewUses]);
+        });
+        setLoading(false);
+      });
+  };
+
   return (
-    <AppContext.Provider value={{createUser, editUser, deleteUser}}>
+    <AppContext.Provider
+      value={{loading, users, createUser, editUser, deleteUser, listUsers}}>
       {children}
     </AppContext.Provider>
   );
@@ -62,8 +93,8 @@ const AppProvider = ({children, route}) => {
 
 export const useApp = () => {
   const context = useContext(AppContext);
-  const {createUser, editUser, deleteUser} = context;
-  return {createUser, editUser, deleteUser};
+  const {loading, users, createUser, editUser, deleteUser, listUsers} = context;
+  return {loading, users, createUser, editUser, deleteUser, listUsers};
 };
 
 export default AppProvider;

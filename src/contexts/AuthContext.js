@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import React, {useContext, createContext, useState, useEffect} from 'react';
 
 import firebase from '../services/firebase';
@@ -10,10 +11,12 @@ const AuthProvider = ({children}) => {
 
   // verifica usuário
   useEffect(() => {
+    setLoading(true);
     firebase.auth().onAuthStateChanged(user => {
       setSigned(!!user);
+      setLoading(false);
     });
-  });
+  }, []);
 
   // loga usuário
   const login = (email, password) => {

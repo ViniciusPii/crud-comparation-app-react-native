@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
+import {ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import firebase from '../../../services/firebase';
+import {useApp} from '../../../contexts/AppContext';
 
 import {
   Layout,
@@ -11,37 +12,13 @@ import {
   Button,
   Text,
 } from '../../../components';
-import {ActivityIndicator} from 'react-native';
 
 const Home = () => {
   const navigation = useNavigation();
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(false);
 
-  let uid = firebase.auth().currentUser.uid;
+  const {loading, users, listUsers} = useApp();
 
-  useState(() => {
-    setLoading(true);
-    firebase
-      .database()
-      .ref('users')
-      .child(uid)
-      .on('value', snap => {
-        setUsers([]);
-
-        snap.forEach(item => {
-          let NewUses = {
-            uid,
-            key: item.key,
-            name: item.val().name,
-            office: item.val().office,
-          };
-
-          setUsers(oldUsers => [...oldUsers, NewUses]);
-        });
-        setLoading(false);
-      });
-  });
+  useState(() => listUsers());
 
   if (loading) {
     return (
