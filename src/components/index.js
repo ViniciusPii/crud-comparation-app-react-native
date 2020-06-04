@@ -1,3 +1,4 @@
+import AppProvider from './AppProvider';
 import Button from './Button';
 import Card from './Card';
 import Clear from './Clear';
@@ -10,6 +11,7 @@ import List from './List';
 import Text from './Text';
 
 export {
+  AppProvider,
   Button,
   Card,
   Container,

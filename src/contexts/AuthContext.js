@@ -1,12 +1,15 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {useContext, createContext} from 'react';
 
-const AuthProvider = () => {
-  return (
-    <View>
-      <Text />
-    </View>
-  );
+const AuthContext = createContext();
+
+const AuthProvider = ({children}) => {
+  return <AuthContext.Provider>{children}</AuthContext.Provider>;
+};
+
+export const useAuth = () => {
+  const context = useContext(AuthContext);
+  const {} = context;
+  return {};
 };
 
 export default AuthProvider;
