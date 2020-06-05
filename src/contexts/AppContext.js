@@ -7,6 +7,7 @@ const AppContext = createContext();
 const AppProvider = ({children}) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [order, setOrder] = useState();
 
   // cria um usuário
   const createUser = (name, office) => {
@@ -19,10 +20,26 @@ const AppProvider = ({children}) => {
 
     firebase
       .database()
+      .ref('order')
+      .child(uid)
+      .once('value', snap => {
+        setOrder(snap.val().order);
+      });
+
+    firebase
+      .database()
       .ref('users')
       .child(uid)
       .child(key)
-      .set({name, office});
+      .set({name, office, order});
+
+    firebase
+      .database()
+      .ref('order')
+      .child(uid)
+      .set({
+        order: order - 1,
+      });
   };
 
   // edita um usuário
@@ -61,6 +78,7 @@ const AppProvider = ({children}) => {
       .database()
       .ref('users')
       .child(uid)
+      .orderByChild('order')
       .on('value', snap => {
         setUsers([]);
 
@@ -69,6 +87,7 @@ const AppProvider = ({children}) => {
             key: item.key,
             name: item.val().name,
             office: item.val().office,
+            order: item.val().order,
           };
 
           setUsers(oldUsers => [...oldUsers, NewUsers]);

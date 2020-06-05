@@ -62,6 +62,13 @@ const AuthProvider = ({children}) => {
             email,
           });
 
+        // nó para ordenar
+        firebase
+          .database()
+          .ref('order')
+          .child(uid)
+          .set({order: 0});
+
         alert('Cadastrado com sucesso!');
         setLoadingButton(false);
       })
