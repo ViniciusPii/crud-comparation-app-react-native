@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import {ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
@@ -18,7 +18,9 @@ const Home = () => {
 
   const {loading, users, listUsers} = useApp();
 
-  useState(() => listUsers());
+  useEffect(() => {
+    listUsers();
+  }, [listUsers]);
 
   if (loading) {
     return (

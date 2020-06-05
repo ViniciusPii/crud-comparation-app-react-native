@@ -7,39 +7,17 @@ const AppContext = createContext();
 const AppProvider = ({children}) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [order, setOrder] = useState();
 
   // cria um usuário
   const createUser = (name, office) => {
     let uid = firebase.auth().currentUser.uid;
-    let key = firebase
-      .database()
-      .ref('users')
-      .child(uid)
-      .push().key;
-
-    firebase
-      .database()
-      .ref('order')
-      .child(uid)
-      .once('value', snap => {
-        setOrder(snap.val().order);
-      });
 
     firebase
       .database()
       .ref('users')
       .child(uid)
-      .child(key)
-      .set({name, office, order});
-
-    firebase
-      .database()
-      .ref('order')
-      .child(uid)
-      .set({
-        order: order - 1,
-      });
+      .push()
+      .set({name, office});
   };
 
   // edita um usuário
@@ -74,26 +52,27 @@ const AppProvider = ({children}) => {
     let uid = firebase.auth().currentUser.uid;
 
     setLoading(true);
+
     firebase
       .database()
       .ref('users')
       .child(uid)
-      .orderByChild('order')
       .on('value', snap => {
         setUsers([]);
 
         snap.forEach(item => {
-          let NewUsers = {
+          let newUsers = {
             key: item.key,
             name: item.val().name,
             office: item.val().office,
-            order: item.val().order,
           };
 
-          setUsers(oldUsers => [...oldUsers, NewUsers]);
+          setUsers(oldUsers => [...oldUsers, newUsers]);
         });
         setLoading(false);
       });
+
+    console.log('aqui');
   };
 
   return (
