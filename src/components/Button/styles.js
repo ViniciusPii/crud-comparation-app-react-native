@@ -52,6 +52,15 @@ export const ButtonCircle = styled.TouchableOpacity`
   margin-right: ${({mr}) => mr}px;
   margin-left: ${({ml}) => ml}px;
   border-radius: 32px;
-  border: 3px solid ${({theme}) => theme.white};
   background-color: ${({theme, bgColor}) => theme[bgColor]};
+`;
+
+export const BackgroundButton = styled.View`
+  width: 74px;
+  height: 74px;
+  align-items: center;
+  justify-content: center;
+  margin-top: -60px;
+  border-radius: 38px;
+  background-color: ${({theme}) => theme.white};
 `;

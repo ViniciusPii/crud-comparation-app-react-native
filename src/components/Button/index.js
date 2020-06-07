@@ -36,16 +36,18 @@ const Button = ({...props}) => {
 
   if (type === 'circle') {
     return (
-      <S.ButtonCircle {...props}>
-        <Icon
-          name={icon}
-          iconColor={iconColor}
-          fs={size}
-          mr={iconMr}
-          ml={iconMl}
-          mt={3}
-        />
-      </S.ButtonCircle>
+      <S.BackgroundButton>
+        <S.ButtonCircle {...props} mt={0}>
+          <Icon
+            name={icon}
+            iconColor={iconColor}
+            fs={size}
+            mr={iconMr}
+            ml={iconMl}
+            mt={3}
+          />
+        </S.ButtonCircle>
+      </S.BackgroundButton>
     );
   }
 

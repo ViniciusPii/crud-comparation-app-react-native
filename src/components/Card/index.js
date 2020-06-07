@@ -37,7 +37,7 @@ const Card = ({...props}) => {
             <S.CardText>{name}</S.CardText>
           </S.CardInfo>
           <S.CardInfo>
-            <Icon name="briefcase" iconColor="purple600" mr={10} />
+            <Icon name="briefcase" iconColor="purple300" mr={10} />
             <S.CardText>{office}</S.CardText>
           </S.CardInfo>
         </S.CardContent>
@@ -46,14 +46,14 @@ const Card = ({...props}) => {
             type="link"
             icon="pencil"
             mr={10}
-            iconColor="purple600"
+            iconColor="purple300"
             iconMr={10}
             onPress={handleEdit}
           />
           <Button
             type="link"
             icon="trash-can"
-            iconColor="purple600"
+            iconColor="purple700"
             onPress={handleDelete}
           />
         </S.CardActions>
