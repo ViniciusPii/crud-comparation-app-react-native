@@ -2,6 +2,8 @@ import React, {createContext, useContext, useState} from 'react';
 
 import firebase from '../services/firebase';
 
+import {orderBy} from 'lodash';
+
 const AppContext = createContext();
 
 const AppProvider = ({children}) => {
@@ -17,7 +19,10 @@ const AppProvider = ({children}) => {
       .ref('users')
       .child(uid)
       .push()
-      .set({name, office});
+      .set({
+        name,
+        office,
+      });
   };
 
   // edita um usuário
@@ -67,12 +72,10 @@ const AppProvider = ({children}) => {
             office: item.val().office,
           };
 
-          setUsers(oldUsers => [...oldUsers, newUsers]);
+          setUsers(oldUsers => orderBy([...oldUsers, newUsers], 'key', 'desc'));
         });
         setLoading(false);
       });
-
-    console.log('aqui');
   };
 
   return (

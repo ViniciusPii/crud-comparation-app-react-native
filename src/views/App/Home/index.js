@@ -20,7 +20,7 @@ const Home = () => {
 
   useState(() => {
     listUsers();
-  }, [listUsers]);
+  });
 
   if (loading) {
     return (
